@@ -12,7 +12,7 @@ end
 bot_modules = []
 puts 'Adding modules...'
 module_classes = ObjectSpace.each_object(Class).select do |c|
-  c.included_modules.include? AppModule
+  c.included_modules.include? CPGUI::AppModule
 end
 module_classes.each do |app_module_class|
   bot_modules.push(app_module_class.new)

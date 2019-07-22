@@ -9,8 +9,8 @@ class CPGUI
 
     def load; end
   end
-  # Every module must be a child of this class!
-  class AppModule
+  # Every module must be a child of this module!
+  module AppModule
     def initialize; end
   end
 end

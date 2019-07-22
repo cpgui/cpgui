@@ -15,7 +15,7 @@ A cross-plattforming app!
 ## Features
 
 - for all plattforms
-- multi-language support _in development_
+- multi-language support _(in development)_
 - unlimited modules
 - customizable modules
 - you can create your own modules!

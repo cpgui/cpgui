@@ -22,4 +22,4 @@ A cross-plattforming app!
 
 ## Guide
 
-[Visit the wiki](https://github.com/cpgui/wiki) to see the guide!
+[Visit the wiki](https://github.com/cpgui/cpgui/wiki) to see the guide!

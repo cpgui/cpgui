@@ -17,6 +17,6 @@ end
 module_classes.each do |app_module_class|
   bot_modules.push(app_module_class.new)
 end
-puts 'Successfully readed module folder!'
+puts 'Successfully read module folder!'
 app = CPGUI.new
 app.run

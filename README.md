@@ -12,6 +12,14 @@ A cross-plattforming app!
 4. Go to this directory with `cd cpgui`
 5. Run this app with `ruby index.rb`
 
+## Features
+
+- for all plattforms
+- multi-language support *in development*
+- unlimited modules
+- customizable modules
+- you can create your own modules!
+
 ## Guide
 
 [Visit the wiki](https://github.com/cpgui/wiki) to see the guide!

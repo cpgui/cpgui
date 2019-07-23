@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-puts 'Loading console file...'
-require 'colorize'
+puts Rainbow('[Console] ').cyan + Rainbow('Loading console file...').yellow
+require 'rainbow'
 require 'socket'
 class CPGUI
   # Handle the console commands
@@ -26,14 +26,14 @@ class CPGUI
       exist = mm.console(command[:prefix], command[:args])
       puts 'Command not exist!'.red unless exist
     rescue Interrupt
-      puts "\r\n\r\nExiting application..."
+      puts "\r\n\r\n" + Rainbow('[Console] ').cyan + Rainbow('Exiting application...').red
       exit
     end
 
     def print_prefix
-      info = "cpgui-#{CPGUI.version}".green.bold
-      pc = ENV['USERNAME'].blue.bold
-      print info + ':' + pc + '$ '.yellow
+      info = Rainbow("cpgui-#{CPGUI.version}").green.bold
+      pc = Rainbow(ENV['USERNAME']).blue.bold
+      print info + ':' + pc + Rainbow('$ ').yellow
     end
 
     def handle_input(input)
@@ -55,4 +55,4 @@ class CPGUI
   end
 end
 
-puts 'Successfully loaded console file!'
+puts Rainbow('[Console] ').cyan + Rainbow('Successfully loaded console file!').green

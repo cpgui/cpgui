@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
-puts 'Loading module file...'
+require 'rainbow'
+puts Rainbow('[ModuleManager] ').blue + Rainbow('Loading module file...').yellow
 # The main class of the app
 class CPGUI
   # This class handle the modules
@@ -27,11 +27,23 @@ class CPGUI
       @modules.each(&:start)
     end
 
+    def auto_add
+      puts Rainbow('[ModuleManager] ').blue + Rainbow('Adding modules...').yellow
+      module_classes = ObjectSpace.each_object(Class).select do |c|
+        c.included_modules.include? CPGUI::AppModule
+      end
+      module_classes.each do |app_module_class|
+        modules.push(app_module_class.new(self))
+      end
+      puts Rainbow('[ModuleManager] ').blue + Rainbow('Successfully added modules!').green
+    end
+
     attr_reader :modules
   end
+
   # Every module must be a child of this module!
   module AppModule
-    def initialize; end
+    def initialize(module_manager); end
 
     def start; end
 
@@ -46,4 +58,4 @@ class CPGUI
     end
   end
 end
-puts 'Successfully loaded the module file!'
+puts Rainbow('[ModuleManager] ').blue + Rainbow('Successfully loaded the module file!').green

@@ -3,7 +3,9 @@
 # Main module for the cpgui
 class MainModule
   include CPGUI::AppModule
-  def initialize; end
+  def initialize(module_manager)
+    @module_manager = module_manager
+  end
 
   def self.version
     'Alpha 0.0.1'

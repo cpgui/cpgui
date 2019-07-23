@@ -1,23 +1,17 @@
 # frozen_string_literal: true
-
-puts 'Welcome to the CPGUI! Starting app...'
+require 'rainbow'
+puts Rainbow('[Loader] ').aqua + Rainbow('Welcome to the CPGUI! Starting app...').yellow
 require_relative './module.rb'
 require_relative './console.rb'
 require_relative './app.rb'
-puts 'Reading module folder...'
+puts Rainbow('[Loader] ').aqua + Rainbow('Reading module folder...').yellow
 Dir[File.join('./modules/', '**/*.rb')].each do |file|
-  puts "Including #{file}..."
+  puts Rainbow('[Loader] ').aqua + Rainbow("Including #{file}...").yellow
   require_relative file
-  puts "Successfully included #{file}!"
+  puts Rainbow('[Loader] ').aqua + Rainbow("Successfully included #{file}!").green
 end
 bot_modules = []
-puts 'Adding modules...'
-module_classes = ObjectSpace.each_object(Class).select do |c|
-  c.included_modules.include? CPGUI::AppModule
-end
-module_classes.each do |app_module_class|
-  bot_modules.push(app_module_class.new)
-end
-puts 'Successfully read module folder!'
+puts Rainbow('[Loader] ').aqua + Rainbow('Successfully read module folder!').green
 app = CPGUI.new(bot_modules)
+puts Rainbow('[Loader] ').aqua + Rainbow('Welcome to the CPGUI! Successfully started app!').green
 app.run

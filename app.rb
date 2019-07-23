@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-puts 'Loading app file...'
+puts Rainbow('[CPGUI] ').white + Rainbow('Loading app file...').yellow
 # The main class of the app
 class CPGUI
   def initialize(bot_modules)
     @console_manager = CPGUI::ConsoleManager.new(self)
     @module_manager = CPGUI::ModuleManager.new(self, bot_modules)
+    @module_manager.auto_add
   end
 
   def run
@@ -19,4 +20,4 @@ class CPGUI
   attr_reader :console_manager
   attr_reader :module_manager
 end
-puts 'Successfully loaded app file!'
+puts Rainbow('[CPGUI] ').white + Rainbow('Successfully loaded app file!').green

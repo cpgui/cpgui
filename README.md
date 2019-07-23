@@ -20,6 +20,7 @@ A cross-plattforming app!
 - unlimited modules
 - customizable modules
 - you can create your own modules!
+- you can create a module for multiple plattforms (for example discord and slack)
 
 ## Screenshot
 
@@ -28,3 +29,7 @@ A cross-plattforming app!
 ## Guide
 
 [Visit the wiki](https://github.com/cpgui/cpgui/wiki) to see the guide!
+
+## Discord
+
+<https://discord.gg/Z6ZsxaG>

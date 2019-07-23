@@ -2,6 +2,7 @@
 
 puts 'Loading console file...'
 require 'colorize'
+require 'socket'
 class CPGUI
   # Handle the console commands
   class ConsoleManager
@@ -30,9 +31,9 @@ class CPGUI
     end
 
     def print_prefix
-      prefix = "cpgui-#{CPGUI.version}".green.bold
-      current_directory = Dir.pwd.blue.bold + '$ '
-      print prefix + ':' + current_directory
+      info = "cpgui-#{CPGUI.version}".green.bold
+      pc = ENV['USERNAME'].blue.bold
+      print info + ':' + pc + '$ '.yellow
     end
 
     def handle_input(input)

@@ -8,6 +8,7 @@ class CPGUI
     def initialize(cpgui, modules)
       @cpgui = cpgui
       @modules = modules
+      start
     end
 
     def console(command, args)
@@ -18,11 +19,23 @@ class CPGUI
       exist
     end
 
+    def stop
+      @modules.each(&:stop)
+    end
+
+    def start
+      @modules.each(&:start)
+    end
+
     attr_reader :modules
   end
   # Every module must be a child of this module!
   module AppModule
     def initialize; end
+
+    def start; end
+
+    def stop; end
 
     def console(_command, _args)
       false

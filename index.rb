@@ -2,6 +2,7 @@
 
 puts 'Welcome to the CPGUI! Starting app...'
 require_relative './module.rb'
+require_relative './console.rb'
 require_relative './app.rb'
 puts 'Reading module folder...'
 Dir[File.join('./modules/', '**/*.rb')].each do |file|
@@ -18,5 +19,5 @@ module_classes.each do |app_module_class|
   bot_modules.push(app_module_class.new)
 end
 puts 'Successfully read module folder!'
-app = CPGUI.new
+app = CPGUI.new(bot_modules)
 app.run

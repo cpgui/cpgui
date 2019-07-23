@@ -21,6 +21,10 @@ A cross-plattforming app!
 - customizable modules
 - you can create your own modules!
 
+## Screenshot
+
+![Console screenshot](https://github.com/cpgui/cpgui/raw/master/assets/screenshot.png "Screenshot from the application")
+
 ## Guide
 
 [Visit the wiki](https://github.com/cpgui/cpgui/wiki) to see the guide!

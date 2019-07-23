@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rainbow'
 puts Rainbow('[ModuleManager] ').blue + Rainbow('Loading module file...').yellow
 # The main class of the app
@@ -28,17 +29,21 @@ class CPGUI
     end
 
     def auto_add
-      puts Rainbow('[ModuleManager] ').blue + Rainbow('Adding modules...').yellow
+      prefix = Rainbow('[ModuleManager] ').blue
+      puts prefix + Rainbow('Adding modules...').yellow
       module_classes = ObjectSpace.each_object(Class).select do |c|
         c.included_modules.include? CPGUI::AppModule
       end
-      module_classes.each do |app_module_class|
-        modules.push(app_module_class.new(self))
-      end
-      puts Rainbow('[ModuleManager] ').blue + Rainbow('Successfully added modules!').green
+      add_classes(module_classes)
+      puts prefix + Rainbow('Successfully added modules!').green
     end
 
     attr_reader :modules
+    def add_classes(classes)
+      classes.each do |app_module_class|
+        modules.push(app_module_class.new(self))
+      end
+    end
   end
 
   # Every module must be a child of this module!
@@ -53,8 +58,20 @@ class CPGUI
       false
     end
 
-    def self.version
+    def version
       'Alpha 0.0.1'
+    end
+
+    def prefix
+      Rainbow('[' + self.class.to_s + '] ').yellow
+    end
+
+    def send(message)
+      puts prefix + message
+    end
+
+    def help
+      ''
     end
   end
 end

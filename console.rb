@@ -31,7 +31,7 @@ class CPGUI
     end
 
     def print_prefix
-      info = Rainbow("cpgui-#{CPGUI.version}").green.bold
+      info = Rainbow("cpgui-#{@cpgui.version}").green.bold
       pc = Rainbow(ENV['USERNAME']).blue.bold
       print info + ':' + pc + Rainbow('$ ').yellow
     end

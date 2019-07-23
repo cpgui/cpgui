@@ -13,7 +13,7 @@ class CPGUI
     @console_manager.run
   end
 
-  def self.version
+  def version
     'Alpha 0.0.1'
   end
 

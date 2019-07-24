@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-puts Rainbow('[Console] ').cyan + Rainbow('Loading console file...').yellow
 require 'rainbow'
 require 'socket'
 class CPGUI
@@ -19,15 +18,16 @@ class CPGUI
 
     def input
       print_prefix
-      command = handle_input(gets.chomp)
-      mm = @cpgui.module_manager
-      return if command.nil?
-
-      exist = mm.console(command[:prefix], command[:args])
-      puts 'Command not exist!'.red unless exist
+      command = split_input(gets.chomp)
+      handle_input(command[:prefix], command[:args]) unless command.nil?
     rescue Interrupt
-      puts "\r\n\r\n" + Rainbow('[Console] ').cyan + Rainbow('Exiting application...').red
+      puts "\r\n\r\n" + Rainbow('Exiting application...').cyan
       exit
+    end
+
+    def handle_input(prefix, args)
+      exist = @cpgui.module_manager.console(prefix, args)
+      puts 'Command not exist!'.red unless exist
     end
 
     def print_prefix
@@ -36,7 +36,7 @@ class CPGUI
       print info + ':' + pc + Rainbow('$ ').yellow
     end
 
-    def handle_input(input)
+    def split_input(input)
       input_list = input.split(' ')
       return if input_list.empty?
 
@@ -54,5 +54,3 @@ class CPGUI
     end
   end
 end
-
-puts Rainbow('[Console] ').cyan + Rainbow('Successfully loaded console file!').green

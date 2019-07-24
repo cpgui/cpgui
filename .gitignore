@@ -54,4 +54,4 @@ build-iPhoneSimulator/
 # Modules
 modules
 !modules/main
-!modules/README.md
+!modules/*.*

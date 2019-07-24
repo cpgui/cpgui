@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rainbow'
-puts Rainbow('[ModuleManager] ').blue + Rainbow('Loading module file...').yellow
 # The main class of the app
 class CPGUI
   # This class handle the modules
@@ -78,4 +77,3 @@ class CPGUI
     end
   end
 end
-puts Rainbow('[ModuleManager] ').blue + Rainbow('Successfully loaded the module file!').green

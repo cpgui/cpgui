@@ -77,5 +77,9 @@ class CPGUI
     def help
       ''
     end
+
+    def enabled
+      true
+    end
   end
 end

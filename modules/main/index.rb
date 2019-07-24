@@ -4,7 +4,6 @@
 class MainModule
   include CPGUI::AppModule
 
-
   def initialize(module_manager)
     @module_manager = module_manager
   end

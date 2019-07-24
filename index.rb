@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 require 'rainbow'
+
 prefix = Rainbow('[Loader] ').aqua
 puts prefix + Rainbow('Welcome to the CPGUI! Starting app...').yellow
 require_relative './module.rb'

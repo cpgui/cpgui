@@ -44,8 +44,8 @@ class MainModule
   def on_modules
     module_classes = modules
     module_string = module_classes.join(Rainbow(', ').silver)
-    output = "#{@module_manager.modules.length} module(s): " + module_string
-    send Rainbow(output).aqua
+    output = Rainbow("#{@module_manager.modules.length} module(s): ").aqua
+    send output + module_string
   end
 
   def on_reload

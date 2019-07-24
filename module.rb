@@ -20,11 +20,11 @@ class CPGUI
     end
 
     def stop
-      @modules.each(&:stop)
+      @modules.each(&:disable!)
     end
 
     def start
-      @modules.each(&:start)
+      @modules.each(&:enable!)
     end
 
     def auto_add
@@ -39,7 +39,9 @@ class CPGUI
     attr_reader :modules
     def add_classes(classes)
       classes.each do |app_module_class|
+        send Rainbow("Adding module #{app_module_class}...").yellow
         modules.push(app_module_class.new(self))
+        send Rainbow("Successfully added module #{app_module_class}!").green
       end
     end
 
@@ -52,9 +54,34 @@ class CPGUI
 
   # Every module must be a child of this module!
   module AppModule
-    def initialize(module_manager); end
+    def initialize(module_manager)
+      @module_manager = module_manager
+      @enabled = false
+    end
 
-    def start; end
+    def enabled!(enable)
+      @enabled = enable
+    end
+
+    def enabled?
+      @enabled
+    end
+
+    def disabled!(disable)
+      @enabled = !disable
+    end
+
+    def disabled?
+      !@enabled
+    end
+
+    def enable!
+      @enabled = true
+    end
+
+    def disable!
+      @enabled = false
+    end
 
     def stop; end
 
@@ -76,10 +103,6 @@ class CPGUI
 
     def help
       ''
-    end
-
-    def enabled
-      true
     end
   end
 end

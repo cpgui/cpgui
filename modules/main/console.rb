@@ -29,13 +29,22 @@ class MainModule
     exit
   end
 
-  def on_modules
+  def modules
     module_classes = []
     @module_manager.modules.each do |app_module|
-      module_classes.push(app_module.class.name)
+      if app_module.enabled?
+        module_classes.push(Rainbow(app_module.class.name).green)
+      else
+        module_classes.push(Rainbow(app_module.class.name).red)
+      end
     end
-    module_string = module_classes.join(', ')
-    output = "#{@module_manager.modules.length} modules: " + module_string
+    module_classes
+  end
+
+  def on_modules
+    module_classes = modules
+    module_string = module_classes.join(Rainbow(', ').silver)
+    output = "#{@module_manager.modules.length} module(s): " + module_string
     send Rainbow(output).aqua
   end
 

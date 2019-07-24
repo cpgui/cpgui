@@ -7,6 +7,7 @@ class CPGUI
     @console_manager = CPGUI::ConsoleManager.new(self)
     @module_manager = CPGUI::ModuleManager.new(self, bot_modules)
     @module_manager.auto_add
+    @module_manager.start
   end
 
   def run

@@ -4,7 +4,7 @@
 class MainModule
   include CPGUI::AppModule
 
-    
+
   def initialize(module_manager)
     @module_manager = module_manager
   end
@@ -12,6 +12,7 @@ class MainModule
   def version
     'Alpha 0.0.1'
   end
+
   def prefix
     Rainbow('[MainModule] ').white
   end

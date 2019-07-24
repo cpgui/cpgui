@@ -28,14 +28,17 @@ class CPGUI
       @modules.each(&:start)
     end
 
+    def prefix
+      Rainbow('[ModuleManager] ').blue
+    end
+
     def auto_add
-      prefix = Rainbow('[ModuleManager] ').blue
-      puts prefix + Rainbow('Adding modules...').yellow
+      send Rainbow('Adding modules...').yellow
       module_classes = ObjectSpace.each_object(Class).select do |c|
         c.included_modules.include? CPGUI::AppModule
       end
       add_classes(module_classes)
-      puts prefix + Rainbow('Successfully added modules!').green
+      send Rainbow('Successfully added modules!').green
     end
 
     attr_reader :modules

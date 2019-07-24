@@ -38,6 +38,7 @@ class MainModule
     output = "#{@module_manager.modules.length} modules: " + module_string
     send Rainbow(output).aqua
   end
+
   def on_reload
     send Rainbow('Reloading cpgui...').yellow
     @module_manager.stop

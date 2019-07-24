@@ -27,10 +27,6 @@ class CPGUI
       @modules.each(&:start)
     end
 
-    def prefix
-      Rainbow('[ModuleManager] ').blue
-    end
-
     def auto_add
       send Rainbow('Adding modules...').yellow
       module_classes = ObjectSpace.each_object(Class).select do |c|
@@ -45,6 +41,12 @@ class CPGUI
       classes.each do |app_module_class|
         modules.push(app_module_class.new(self))
       end
+    end
+
+    private
+
+    def send(message)
+      puts Rainbow('[ModuleManager] ').blue + message
     end
   end
 

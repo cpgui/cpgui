@@ -10,7 +10,7 @@ require_relative './app.rb'
 puts prefix + Rainbow('Reading module folder...').yellow
 Dir[File.join('./modules/', '**/*.rb')].each do |file|
   puts prefix + Rainbow("Including #{file}...").yellow
-  require_relative file
+  load file
   puts prefix + Rainbow("Successfully included #{file}!").green
 end
 bot_modules = []

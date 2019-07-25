@@ -72,39 +72,43 @@ class CPGUI
       @enabled = false
     end
 
-    def enabled!(enable)
+    def enabled!(enable = true)
       if enable
-        enable!
+        @enabled = true
+        on_enable
       else
-        disable!
+        @enabled = false
+        on_disable
       end
     end
+
+    alias enable! enabled!
 
     def enabled?
       @enabled
     end
 
-    def disabled!(disable)
-      enabled!(!disable)
+    alias enable? enabled?
+
+    def disabled!(disable = true)
+      if disable
+        @enabled = false
+        on_disable
+      else
+        @enabled = true
+        on_enable
+      end
     end
+
+    alias disable! disabled!
 
     def disabled?
       !@enabled
     end
 
-    def enable!
-      @enabled = true
-      on_enable
-    end
+    alias disable? disabled?
 
     def on_enable; end
-
-    def disable; end
-
-    def disable!
-      @enabled = false
-      on_disable
-    end
 
     def on_disable; end
 

@@ -4,8 +4,9 @@
 class MainModule
   include CPGUI::AppModule
 
-  def initialize(module_manager)
-    @module_manager = module_manager
+  def on_enable
+    send Rainbow('Enabling main module...').yellow
+    send Rainbow('Successfully enabled main module!').green
   end
 
   def version

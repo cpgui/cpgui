@@ -60,7 +60,11 @@ class CPGUI
     end
 
     def enabled!(enable)
-      @enabled = enable
+      if enable
+        enable!
+      else
+        disable!
+      end
     end
 
     def enabled?
@@ -68,7 +72,7 @@ class CPGUI
     end
 
     def disabled!(disable)
-      @enabled = !disable
+      enabled!(!disable)
     end
 
     def disabled?
@@ -77,11 +81,19 @@ class CPGUI
 
     def enable!
       @enabled = true
+      on_enable
     end
+
+    def on_enable; end
+
+    def disable; end
 
     def disable!
       @enabled = false
+      on_disable
     end
+
+    def on_disable; end
 
     def stop; end
 

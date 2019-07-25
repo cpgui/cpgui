@@ -38,17 +38,20 @@ class CPGUI
 
     def input
       print_prefix
-      command = split_input(gets.chomp)
-      handle_input(command[:prefix], command[:args]) unless command.nil?
+      handle_input
     rescue Interrupt
-      puts "\r\n\r\n"
+      puts "\r\n"
       send Rainbow('Exiting application...').aqua
       @cpgui.stop
+      puts "\r\n\r\n"
       exit
     end
 
-    def handle_input(prefix, args)
-      exist = @cpgui.module_manager.console(prefix, args)
+    def handle_input
+      command = split_input(gets.chomp)
+      return false if command.nil?
+
+      exist = @cpgui.module_manager.console(command[:prefix], command[:args])
       send Rainbow('Command not exist!').red unless exist
     end
 

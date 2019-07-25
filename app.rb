@@ -14,6 +14,11 @@ class CPGUI
     @console_manager.run
   end
 
+  def stop
+    @module_manager.stop
+    @console_manager.stop
+  end
+
   def version
     'Alpha 0.0.1'
   end

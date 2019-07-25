@@ -62,7 +62,8 @@ class MainModule
 
   def command_exit
     puts "\r\n"
-    send Rainbow('Exiting application...').red
+    send Rainbow('Exiting application...').aqua
+    @module_manager.cpgui.stop
     exit
   end
 

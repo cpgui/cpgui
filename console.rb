@@ -10,9 +10,29 @@ class CPGUI
     end
 
     def run
+      send Rainbow('Running cpgui...').aqua
       @run = true
       input while @run
     end
+
+    def stop
+      send Rainbow('Stopping cpgui...').aqua
+      @run = false
+    end
+
+    def run?
+      @run
+    end
+
+    def prefix
+      Rainbow('[ConsoleManager] ').aqua
+    end
+
+    def send(message)
+      puts prefix + message
+    end
+
+    attr_reader :cpgui
 
     private
 
@@ -21,13 +41,15 @@ class CPGUI
       command = split_input(gets.chomp)
       handle_input(command[:prefix], command[:args]) unless command.nil?
     rescue Interrupt
-      puts "\r\n\r\n" + Rainbow('Exiting application...').cyan
+      puts "\r\n\r\n"
+      send Rainbow('Exiting application...').aqua
+      @cpgui.stop
       exit
     end
 
     def handle_input(prefix, args)
       exist = @cpgui.module_manager.console(prefix, args)
-      puts Rainbow('Command not exist!').red unless exist
+      send Rainbow('Command not exist!').red unless exist
     end
 
     def print_prefix
@@ -43,14 +65,6 @@ class CPGUI
       command_prefix = input_list[0]
       command_args = input_list[1..-1]
       { prefix: command_prefix, args: command_args }
-    end
-
-    def stop
-      @run = false
-    end
-
-    def run?
-      @run
     end
   end
 end

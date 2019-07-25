@@ -56,6 +56,8 @@ class CPGUI
       end
     end
 
+    attr_reader :cpgui
+
     private
 
     def send(message)

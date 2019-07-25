@@ -14,7 +14,8 @@ class CPGUI
     def console(command, args)
       exist = false
       @modules.each do |app_module|
-        exist = true if app_module.console(command, args)
+        here_exist = app_module.console(command, args) if app_module.enabled?
+        exist = true if here_exist
       end
       exist
     end
@@ -42,6 +43,16 @@ class CPGUI
         send Rainbow("Adding module #{app_module_class}...").yellow
         modules.push(app_module_class.new(self))
         send Rainbow("Successfully added module #{app_module_class}!").green
+      end
+    end
+
+    def disable(app_module_class)
+      modules.each do |app_module|
+        next if app_module.class < app_module_class
+
+        send "Disabling #{app_module}..."
+        app_module.disable!
+        send "Successfully disabled #{app_module}!"
       end
     end
 
@@ -111,6 +122,10 @@ class CPGUI
 
     def send(message)
       puts prefix + message
+    end
+
+    def error(message)
+      puts prefix + Rainbow(message).red
     end
 
     def help

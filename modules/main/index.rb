@@ -9,6 +9,11 @@ class MainModule
     send Rainbow('Successfully enabled main module!').green
   end
 
+  def on_disable
+    send Rainbow('Disabling main module...').yellow
+    send Rainbow('Successfully disabled main module!').green
+  end
+
   def version
     'Alpha 0.0.1'
   end

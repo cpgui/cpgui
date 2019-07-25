@@ -27,7 +27,7 @@ class CPGUI
 
     def handle_input(prefix, args)
       exist = @cpgui.module_manager.console(prefix, args)
-      puts 'Command not exist!'.red unless exist
+      puts Rainbow('Command not exist!').red unless exist
     end
 
     def print_prefix

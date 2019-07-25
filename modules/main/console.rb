@@ -10,7 +10,7 @@ class MainModule
     when 'modules', 'module', 'mods', 'mod', 'h', 'help' then on_modules
     when 'r', 'rl', 'rel', 'reload', 'ref', 'refresh' then on_reload
     else
-      false
+      return false
     end
     true
   end
@@ -51,7 +51,7 @@ class MainModule
   def on_reload
     send Rainbow('Reloading cpgui...').yellow
     @module_manager.stop
-    @module_manager.run
+    @module_manager.start
     send Rainbow('Successfully reloaded cpgui!').green
   end
 end

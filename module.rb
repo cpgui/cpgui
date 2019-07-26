@@ -148,7 +148,7 @@ class CPGUI
 
     # Set the version of the module!
     def version
-      'Alpha 0.0.1'
+      'Alpha 0.5'
     end
 
     # Set the prefix of the module for the send and error method!

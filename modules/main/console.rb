@@ -26,30 +26,42 @@ class MainModule
     true
   end
 
-  def can_disable(args)
-    if args.length == 1 || args.length == 2 && args[1].casecmp('confirm')
-      begin
-        module_class = Kernel.const_get(args[0])
-        return module_class if module_class < CPGUI::AppModule
-
-        error 'Invalid module!'
-      rescue StandardError then error 'Invalid module!' end
-    else
-      error 'Usage: disable <Module>!'
+  def command_enable(args)
+    unless args.length == 1
+      error Rainbow('Usage: enable <Module>!').red
+      return false
     end
+    module_class = module_by_name args[0]
+    return false unless module_class
+
+    @module_manager.enable(module_class)
+  end
+
+  def can_command_disable(args)
+    length = args.length
+    is_confirm = length == 2 && args[1].casecmp('confirm')
+    unless length == 1 || is_confirm
+      error('Usage: disable <Module>!')
+      return nil
+    end
+    module_class = module_by_name args[0]
+    return nil unless module_class
+
+    module_class
   end
 
   def command_disable(args)
-    module_class = can_disable args
+    module_class = can_command_disable args
     return unless module_class
 
-    disable_message = 'Please use confirm if you really want to disable this!'
-    on_self = module_class == self.class && args.length != 2
-    if on_self
-      send(disable_message)
-    else
-      @module_manager.disable(module_class)
+    if module_class == self.class && !args.length == 2
+      send 'Please use confirm if you really want to disable this!'
+      return false
     end
+    send Rainbow("Disabling #{args[0]}...").yellow
+    @module_manager.disable(module_class)
+    send Rainbow("Successfully disabled #{args[0]}!").green
+    true
   end
 
   def command_main
@@ -91,5 +103,15 @@ class MainModule
     @module_manager.stop
     @module_manager.start
     send Rainbow('Successfully reloaded cpgui!').green
+  end
+
+  private
+
+  def module_by_name(name)
+    module_class = Kernel.const_get(name)
+    return module_class if module_class < CPGUI::AppModule
+
+    error 'Invalid module!'
+  rescue StandardError then error 'Invalid module!'
   end
 end

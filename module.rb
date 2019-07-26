@@ -46,13 +46,23 @@ class CPGUI
       end
     end
 
+    def enable(app_module_class)
+      modules.each do |app_module|
+        next unless app_module.class == app_module_class
+
+        send Rainbow("Enabling #{app_module}...").yellow
+        app_module.enable!
+        send Rainbow("Successfully enabled #{app_module}!").green
+      end
+    end
+
     def disable(app_module_class)
       modules.each do |app_module|
-        next if app_module.class < app_module_class
+        next unless app_module.class == app_module_class
 
-        send "Disabling #{app_module}..."
+        send Rainbow("Disabling #{app_module}...").yellow
         app_module.disable!
-        send "Successfully disabled #{app_module}!"
+        send Rainbow("Successfully disabled #{app_module}!").green
       end
     end
 

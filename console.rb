@@ -53,7 +53,7 @@ class CPGUI
     end
 
     def handle_input
-      command = split_input(gets.chomp)
+      command = split_input(gets)
       return false if command.nil?
 
       exist = @cpgui.module_manager.console(command[:prefix], command[:args])
@@ -67,6 +67,7 @@ class CPGUI
     end
 
     def split_input(input)
+      input = input.chomp
       input_list = input.split(' ')
       return if input_list.empty?
 

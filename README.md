@@ -1,6 +1,7 @@
 # cpgui
 
 [![Build Status](https://travis-ci.com/cpgui/cpgui.svg?branch=master)](https://travis-ci.com/cpgui/cpgui)
+
 A cross-plattforming app!
 
 ## Installation

@@ -28,7 +28,7 @@ A cross-plattforming app!
 
 ## Guide
 
-[Visit the wiki](https://github.com/cpgui/cpgui/wiki) to see the guide!
+[Visit the wiki](https://github.com/cpgui/cpgui/wiki) to see the guide! Click [here](https://cpgui.github.io/cpgui/index.html) to open the documentation.
 
 ## Discord
 

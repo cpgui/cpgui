@@ -1,4 +1,3 @@
 language: ruby
-rvm:
-  - 2.6.3
-  - jruby
+rvm: 2.6.3
+script: bundle exec ruby index.rb

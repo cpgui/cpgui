@@ -26,7 +26,7 @@ class CPGUI
     def run?
       @run
     end
-    
+
     # The prefix of the console manager
     def prefix
       Rainbow('[ConsoleManager] ').aqua

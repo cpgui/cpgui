@@ -1,9 +1,10 @@
 # cpgui
+
 A cross-plattforming app!
 
 ## Installation
 
-1. Install git 
+1. Install git
     - Linux: `sudo apt install git`
     - Windows: <http://msysgit.github.com/>
     - Mac: <http://sourceforge.net/projects/git-osx-installer>

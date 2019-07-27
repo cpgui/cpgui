@@ -1,5 +1,8 @@
 # cpgui
 
+## PROJECT NOW ON GITLAB:
+<https://gitlab.com/cpgui/cpgui>
+
 [![Build Status](https://travis-ci.com/cpgui/cpgui.svg?branch=master)](https://travis-ci.com/cpgui/cpgui)
 
 A cross-plattforming app!
